@@ -12,5 +12,6 @@ const nextConfig = {
     unoptimized: true,
   },
 };
+
 // withContentCollections must be the outermost plugin
 export default withContentCollections(nextConfig);
