@@ -6,10 +6,11 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
-import HackathonsSection from "@/components/section/hackathons-section";
+import MediumSection from "@/components/section/medium-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
+import { DiaTextReveal } from "@/registry/magicui/dia-text-reveal";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -20,11 +21,10 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
+              <DiaTextReveal
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
-                yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                colors={["#A97CF8", "#F38CB8", "#FDCC92"]}
               />
               <BlurFadeText
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
@@ -135,9 +135,9 @@ export default function Page() {
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="hackathons">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
-          <HackathonsSection />
+      <section id="medium">
+        <BlurFade delay={BLUR_FADE_DELAY * 15}>
+          <MediumSection />
         </BlurFade>
       </section>
       <section id="contact">

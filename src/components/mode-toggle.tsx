@@ -1,23 +1,20 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 
 export function ModeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
-    <Button
-      type="button"
-      variant="link"
-      size="icon"
-      className={cn(className)}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-    >
-      <SunIcon className="h-full w-full" />
-      <MoonIcon className="hidden h-full w-full" />
-    </Button>
+    <AnimatedThemeToggler
+      className={cn(
+        "flex items-center justify-center [&_svg]:h-full [&_svg]:w-full",
+        className
+      )}
+      theme={resolvedTheme === "dark" ? "dark" : "light"}
+      onThemeChange={setTheme}
+    />
   );
 }

@@ -10,6 +10,54 @@ import {
 import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import type { types as RoughNotationType } from "react-rough-notation";
+
+const HIGHLIGHTED_TERMS: Record<
+  string,
+  { type: RoughNotationType; color: string }
+> = {
+  GraphQL: { type: "highlight", color: "rgba(225, 16, 152, 0.35)" },
+  RabbitMQ: { type: "underline", color: "#FF6600" },
+  Kubernetes: { type: "box", color: "#326CE5" },
+};
+
+const HIGHLIGHT_PATTERN = new RegExp(
+  `(${Object.keys(HIGHLIGHTED_TERMS).join("|")})`,
+  "g"
+);
+
+function HighlightedDescription({
+  text,
+  show,
+}: {
+  text: string;
+  show: boolean;
+}) {
+  const parts = text.split(HIGHLIGHT_PATTERN);
+
+  return (
+    <RoughNotationGroup show={show}>
+      {parts.map((part, index) => {
+        const highlight = HIGHLIGHTED_TERMS[part];
+        if (!highlight) {
+          return <span key={index}>{part}</span>;
+        }
+        return (
+          <RoughNotation
+            key={index}
+            type={highlight.type}
+            color={highlight.color}
+            strokeWidth={2}
+            padding={highlight.type === "highlight" ? [0, 4] : 2}
+          >
+            {part}
+          </RoughNotation>
+        );
+      })}
+    </RoughNotationGroup>
+  );
+}
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -31,12 +79,22 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function WorkSection() {
+  const [openValue, setOpenValue] = useState<string | undefined>();
+
   return (
-    <Accordion type="single" collapsible className="w-full grid gap-6">
-      {DATA.work.map((work) => (
+    <Accordion
+      type="single"
+      collapsible
+      className="w-full grid gap-6"
+      value={openValue}
+      onValueChange={setOpenValue}
+    >
+      {DATA.work.map((work) => {
+        const itemValue = `${work.company}-${work.title}-${work.start}`;
+        return (
         <AccordionItem
-          key={`${work.company}-${work.title}-${work.start}`}
-          value={`${work.company}-${work.title}-${work.start}`}
+          key={itemValue}
+          value={itemValue}
           className="w-full border-b-0 grid gap-2"
         >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
@@ -77,10 +135,14 @@ export default function WorkSection() {
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {work.description}
+            <HighlightedDescription
+              text={work.description}
+              show={openValue === itemValue}
+            />
           </AccordionContent>
         </AccordionItem>
-      ))}
+        );
+      })}
     </Accordion>
   );
 }
