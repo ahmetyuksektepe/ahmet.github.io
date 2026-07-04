@@ -20,7 +20,7 @@ import { GraphQL } from "@/components/ui/svgs/graphql";
 export const DATA = {
   name: "Ahmet Faruk Yüksektepe",
   initials: "AY",
-  url: "https://ahmetdev.io",
+  url: "https://ahmetyuksektepe.dev",
   location: "Antalya, Turkey",
   locationLink: "https://www.google.com/maps/place/Antalya",
   description:
