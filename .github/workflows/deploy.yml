@@ -40,6 +40,9 @@ jobs:
 
       - name: Add .nojekyll
         run: touch ./out/.nojekyll
+      
+      - name: Add CNAME
+        run: echo "ahmetyuksektepe.dev" > ./out/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
