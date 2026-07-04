@@ -18,7 +18,7 @@ import { RabbitMQ } from "@/components/ui/svgs/rabbitmq";
 import { GraphQL } from "@/components/ui/svgs/graphql";
 
 export const DATA = {
-  name: "Ahmet Faruk YÃ¼ksektepe",
+  name: "Ahmet Faruk Yüksektepe",
   initials: "AY",
   url: "https://ahmetdev.io",
   location: "Antalya, Turkey",
