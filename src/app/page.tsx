@@ -13,6 +13,8 @@ import { ArrowUpRight } from "lucide-react";
 import { DiaTextReveal } from "@/registry/magicui/dia-text-reveal";
 import { IconCloud } from "@/components/ui/icon-cloud";
 
+import AboutSection from "@/components/section/about-section";
+
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
@@ -48,11 +50,7 @@ export default function Page() {
             <h2 className="text-xl font-bold">About</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-              <Markdown>
-                {DATA.summary}
-              </Markdown>
-            </div>
+            <AboutSection />
           </BlurFade>
         </div>
       </section>
