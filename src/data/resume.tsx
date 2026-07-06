@@ -93,8 +93,7 @@ export const DATA = {
       color: "from-pink-500/10",
       icon: "graduation-cap",
       items: [
-        { name: "Rust", icon: null, slug: "rust" },
-        { name: "WebGPU", icon: null, slug: "webgpu" },
+        { name: "Keycloak", icon: null, slug: "keycloak" },
       ],
     },
   },

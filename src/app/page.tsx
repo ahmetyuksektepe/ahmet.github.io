@@ -11,6 +11,7 @@ import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight, Layout, Server, Database, Cloud, Wrench, GraduationCap } from "lucide-react";
 import { DiaTextReveal } from "@/registry/magicui/dia-text-reveal";
 import { IconCloud } from "@/components/ui/icon-cloud";
+import { ShineBorder } from "@/registry/magicui/shine-border";
 
 import AboutSection from "@/components/section/about-section";
 
@@ -45,10 +46,18 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <div className="relative size-24 md:size-32 rounded-full p-[3.5px] flex items-center justify-center bg-background shadow-lg ring-4 ring-muted overflow-hidden">
+                <ShineBorder
+                  borderWidth={3.5}
+                  duration={20}
+                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                  className="rounded-full"
+                />
+                <Avatar className="size-full border-0">
+                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+              </div>
             </BlurFade>
           </div>
         </div>
@@ -95,10 +104,10 @@ export default function Page() {
                       <img
                         src={education.logoUrl}
                         alt={education.school}
-                        className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+                        className="size-12 md:size-14 p-1.5 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
                       />
                     ) : (
-                      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+                      <div className="size-12 md:size-14 p-1.5 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
                     )}
                     <div className="flex-1 min-w-0 flex flex-col gap-0.5">
                       <div className="font-semibold leading-none flex items-center gap-2">
@@ -126,7 +135,7 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {Object.entries(DATA.skills).map(([key, category], index) => {
               const IconComponent = categoryIconMap[category.icon as keyof typeof categoryIconMap];
               const isLarge = key === "frontend" || key === "backend";
@@ -134,7 +143,7 @@ export default function Page() {
                 <BlurFade
                   key={key}
                   delay={BLUR_FADE_DELAY * 10 + index * 0.05}
-                  className={isLarge ? "sm:col-span-2 lg:col-span-6" : "lg:col-span-3"}
+                  className={isLarge ? "sm:col-span-2" : ""}
                 >
                   <div className="relative overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md p-6 h-full transition-all duration-300 hover:shadow-lg hover:border-foreground/15 group">
                     {/* Subtle top-right glow */}
@@ -157,7 +166,7 @@ export default function Page() {
                               <img
                                 src={`https://cdn.simpleicons.org/${skill.slug}`}
                                 alt={skill.name}
-                                className="size-3.5 rounded overflow-hidden object-contain dark:invert-[0.1]"
+                                className={`size-3.5 rounded overflow-hidden object-contain ${"invertOnDark" in skill && skill.invertOnDark ? "dark:invert" : ""}`}
                               />
                             )}
                             <span className="text-foreground text-xs font-medium">{skill.name}</span>
