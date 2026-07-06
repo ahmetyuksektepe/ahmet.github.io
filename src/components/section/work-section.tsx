@@ -20,6 +20,8 @@ const HIGHLIGHTED_TERMS: Record<
   GraphQL: { type: "highlight", color: "rgba(225, 16, 152, 0.35)" },
   RabbitMQ: { type: "underline", color: "#FF6600" },
   Kubernetes: { type: "box", color: "#326CE5" },
+  Keycloak: { type: "highlight", color: "rgba(224, 86, 36, 0.3)" },
+  "LLM-based": { type: "box", color: "#A97CF8" },
 };
 
 const HIGHLIGHT_PATTERN = new RegExp(
@@ -134,7 +136,7 @@ export default function WorkSection() {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
+          <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground whitespace-pre-line">
             <HighlightedDescription
               text={work.description}
               show={openValue === itemValue}

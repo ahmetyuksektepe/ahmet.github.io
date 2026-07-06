@@ -1,4 +1,4 @@
-﻿import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
@@ -28,7 +28,7 @@ export const DATA = {
     "Full-Stack Software Developer. Building web applications and backend systems.",
   summary:
     "Hi, I'm Ahmet. I am Full-Stack Software Developer currently working at Ankasoft in Yalova. I graduated from Yalova University Computer Engineering Department, ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/WhatsApp Image 2026-07-06 at 21.20.40.jpeg",
   mediumUrl: "https://medium.com/@ahmetfyuksektepe",
   skills: [
     { name: "React", icon: ReactLight, slug: "react" },
@@ -71,10 +71,10 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:ahmetf_y@outlook.com",
         icon: Icons.email,
 
-        navbar: false,
+        navbar: true,
       },
     },
   },
@@ -90,7 +90,7 @@ export const DATA = {
       start: "June 2026",
       end: "Present",
       description:
-        "I am currently contributing to the development of a multi-app platform. My responsibilities include building different web apps and backend services for the platform, as well as working on Keycloak-based SSO integration to enable centralized authentication and identity management across applications.",
+        "I am currently working as a Full-Stack Software Developer, contributing to multiple projects that involve .NET & Nest.js backend development, Next.js frontend development, and deployment infrastructure. My responsibilities cover building scalable backend services, developing modern web interfaces, containerizing applications with Docker, configuring Nginx, and preparing projects for production environments.\n\n I also work on platform-level features such as centralized authentication with Keycloak-based SSO, as well as AI-assisted systems involving machine learning model integration and LLM-based capabilities.",
     },
     {
       company: "ANKASOFT",
