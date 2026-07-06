@@ -7,15 +7,24 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import MediumSection from "@/components/section/medium-section";
-import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Layout, Server, Database, Cloud, Wrench, GraduationCap } from "lucide-react";
 import { DiaTextReveal } from "@/registry/magicui/dia-text-reveal";
 import { IconCloud } from "@/components/ui/icon-cloud";
 
 import AboutSection from "@/components/section/about-section";
 
 const BLUR_FADE_DELAY = 0.04;
+
+const categoryIconMap = {
+  layout: Layout,
+  server: Server,
+  database: Database,
+  cloud: Cloud,
+  wrench: Wrench,
+  "graduation-cap": GraduationCap,
+};
+
 
 export default function Page() {
   return (
@@ -117,20 +126,60 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
-                </div>
-              </BlurFade>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+            {Object.entries(DATA.skills).map(([key, category], index) => {
+              const IconComponent = categoryIconMap[category.icon as keyof typeof categoryIconMap];
+              const isLarge = key === "frontend" || key === "backend";
+              return (
+                <BlurFade
+                  key={key}
+                  delay={BLUR_FADE_DELAY * 10 + index * 0.05}
+                  className={isLarge ? "sm:col-span-2 lg:col-span-6" : "lg:col-span-3"}
+                >
+                  <div className="relative overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md p-6 h-full transition-all duration-300 hover:shadow-lg hover:border-foreground/15 group">
+                    {/* Subtle top-right glow */}
+                    <div className={`absolute -top-12 -right-12 w-28 h-28 bg-gradient-to-br ${category.color} to-transparent blur-2xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300`} />
+                    
+                    <div className="flex flex-col gap-4 h-full relative z-10">
+                      <div className="flex items-center gap-2">
+                        <div className="border border-border/60 bg-muted/50 rounded-lg p-1.5 flex items-center justify-center">
+                          {IconComponent && <IconComponent className="size-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />}
+                        </div>
+                        <h3 className="font-semibold text-base text-foreground tracking-tight">{category.title}</h3>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {category.items.map((skill) => (
+                          <div key={skill.name} className="border bg-background/60 hover:bg-background border-border/80 rounded-xl h-8 w-fit px-3 flex items-center gap-2 transition-colors duration-200">
+                            {skill.icon ? (
+                              <skill.icon className="size-3.5 rounded overflow-hidden object-contain" />
+                            ) : (
+                              <img
+                                src={`https://cdn.simpleicons.org/${skill.slug}`}
+                                alt={skill.name}
+                                className="size-3.5 rounded overflow-hidden object-contain dark:invert-[0.1]"
+                              />
+                            )}
+                            <span className="text-foreground text-xs font-medium">{skill.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </BlurFade>
+              );
+            })}
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 11} className="flex justify-center">
             <IconCloud
-              images={DATA.skills.map(
-                (skill) => `https://cdn.simpleicons.org/${skill.slug}`
+              images={Array.from(
+                new Set(
+                  Object.values(DATA.skills).flatMap((category) =>
+                    category.items.map(
+                      (skill) => `https://cdn.simpleicons.org/${skill.slug}`
+                    )
+                  )
+                )
               )}
             />
           </BlurFade>
