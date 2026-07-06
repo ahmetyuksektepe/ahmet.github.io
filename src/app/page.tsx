@@ -11,6 +11,7 @@ import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import { DiaTextReveal } from "@/registry/magicui/dia-text-reveal";
+import { IconCloud } from "@/components/ui/icon-cloud";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -128,13 +129,20 @@ export default function Page() {
               </BlurFade>
             ))}
           </div>
+          <BlurFade delay={BLUR_FADE_DELAY * 11} className="flex justify-center">
+            <IconCloud
+              images={DATA.skills.map(
+                (skill) => `https://cdn.simpleicons.org/${skill.slug}`
+              )}
+            />
+          </BlurFade>
         </div>
       </section>
-      <section id="projects">
+      {/* <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <ProjectsSection />
         </BlurFade>
-      </section>
+      </section> */}
       <section id="medium">
         <BlurFade delay={BLUR_FADE_DELAY * 15}>
           <MediumSection />
