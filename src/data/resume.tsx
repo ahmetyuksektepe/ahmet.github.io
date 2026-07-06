@@ -49,15 +49,14 @@ export const DATA = {
       icon: "server",
       items: [
         { name: "Nest.js", icon: NestJS, slug: "nestjs" },
+        { name: "Spring Boot", icon: null, slug: "springboot" },
         { name: ".NET", icon: DotNet, slug: "dotnet" },
         { name: "Java", icon: Java, slug: "openjdk" },
-        { name: "Golang", icon: Golang, slug: "golang" },
         { name: "Node.js", icon: Nodejs, slug: "nodedotjs" },
         { name: "Python", icon: Python, slug: "python" },
         { name: "C#", icon: Csharp, slug: "csharp" },
         { name: "GraphQL", icon: GraphQL, slug: "graphql" },
         { name: "RabbitMQ", icon: RabbitMQ, slug: "rabbitmq" },
-        { name: "n8n", icon: N8n, slug: "n8n" },
       ],
     },
     database: {
@@ -84,8 +83,9 @@ export const DATA = {
       icon: "wrench",
       items: [
         { name: "Git", icon: null, slug: "git" },
+        { name: "Postman", icon: null, slug: "postman" },
         { name: "Figma", icon: null, slug: "figma" },
-        { name: "Linear", icon: null, slug: "linear" },
+        { name: "n8n", icon: N8n, slug: "n8n" },
       ],
     },
     learning: {
