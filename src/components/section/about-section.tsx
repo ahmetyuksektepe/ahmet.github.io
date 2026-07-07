@@ -8,9 +8,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/ui/terminal";
 
 export default function AboutSection() {
-  const targetText = "ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.";
-  const parts = DATA.summary.split(targetText);
-
   const [terminalLang, setTerminalLang] = useState<"EN" | "TR" | null>(null);
   const [terminalKey, setTerminalKey] = useState(0);
 
@@ -38,10 +35,38 @@ export default function AboutSection() {
     document.body.removeChild(link);
   };
 
-  const summary =
-    parts.length === 2 ? (
+  const targetText1 = "ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.";
+  const targetText2 = "TÜBİTAK 2209-A";
+
+  const renderHighlightedText = (text: string) => {
+    const parts1 = text.split(targetText1);
+    if (parts1.length !== 2) return text;
+
+    const renderSecondHighlight = (subText: string) => {
+      const parts2 = subText.split(targetText2);
+      if (parts2.length !== 2) return <>{subText}</>;
+      return (
+        <>
+          {parts2[0]}
+          <RoughNotation
+            type="underline"
+            show={true}
+            color="#A97CF8"
+            strokeWidth={2.5}
+            animationDuration={1500}
+          >
+            <span className="font-bold text-foreground inline-block whitespace-nowrap">
+              {targetText2}
+            </span>
+          </RoughNotation>
+          {parts2[1]}
+        </>
+      );
+    };
+
+    return (
       <>
-        {parts[0]}
+        {renderSecondHighlight(parts1[0])}
         <RoughNotation
           type="underline"
           show={true}
@@ -50,14 +75,15 @@ export default function AboutSection() {
           animationDuration={1500}
         >
           <span className="font-bold text-foreground">
-            {targetText}
+            {targetText1}
           </span>
         </RoughNotation>
-        {parts[1]}
+        {renderSecondHighlight(parts1[1])}
       </>
-    ) : (
-      DATA.summary
     );
+  };
+
+  const summary = renderHighlightedText(DATA.summary);
 
   return (
     <div className="flex flex-col items-start gap-4 w-full">
