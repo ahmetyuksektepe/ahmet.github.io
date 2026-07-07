@@ -1,15 +1,16 @@
 "use client";
 
 import { DATA } from "@/data/resume";
+import { ShinyButton } from "@/components/ui/shiny-button";
 import { RoughNotation } from "react-rough-notation";
 
 export default function AboutSection() {
   const targetText = "ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.";
   const parts = DATA.summary.split(targetText);
 
-  if (parts.length === 2) {
-    return (
-      <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+  const summary =
+    parts.length === 2 ? (
+      <>
         {parts[0]}
         <RoughNotation
           type="underline"
@@ -23,14 +24,32 @@ export default function AboutSection() {
           </span>
         </RoughNotation>
         {parts[1]}
-      </div>
+      </>
+    ) : (
+      DATA.summary
     );
-  }
 
-  // Fallback to plain summary if text is modified or not matched
   return (
-    <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-      {DATA.summary}
+    <div className="flex flex-col items-start gap-4 w-full">
+      <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        {summary}
+      </div>
+      <div className="flex flex-row flex-wrap gap-4 items-center justify-between w-full">
+        <ShinyButton
+          href="/CV.pdf"
+          download
+          aria-label="Download English resume PDF"
+        >
+          Download Resume (EN)
+        </ShinyButton>
+        <ShinyButton
+          href="#"
+          download
+          aria-label="Download Turkish resume PDF"
+        >
+          Download Resume (TR)
+        </ShinyButton>
+      </div>
     </div>
   );
 }
