@@ -27,7 +27,7 @@ export const DATA = {
   description:
     "Full-Stack Software Developer. Building web applications and backend systems.",
   summary:
-    "Hi, I'm Ahmet. I am Full-Stack Software Developer currently working at Ankasoft in Yalova. I graduated from Yalova University Computer Engineering Department, ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.",
+    "Hi, I'm Ahmet. I am a Full-Stack Software Developer currently working at Ankasoft in Yalova. I graduated from Yalova University Computer Engineering Department, ranking 3rd in the engineering faculty with a GPA of 3.49/4.00.\n\nI develop backend services and modern web interfaces using technologies such as .NET and Next.js. I also take part in deployment and infrastructure processes, including Dockerizing applications, configuring Nginx, and preparing projects for production environments.\n\nI care about understanding the architecture behind systems, how components communicate, and how applications can be designed to be scalable, maintainable, and reliable. I enjoy taking responsibility, solving problems, and continuously learning new technologies.\n\nCurrently, I am focused on improving myself in software architecture, microservice architectures, distributed systems, scalable backend design, and AI-assisted systems such as LLM-based applications and tool calling. I am also interested in Kubernetes, DevOps practices, and CI/CD pipelines, as I want to deepen my understanding of how modern applications are deployed, automated, monitored, and scaled in real-world production environments.",
   avatarUrl: "/avatar.jpeg",
   mediumUrl: "https://medium.com/@ahmetfyuksektepe",
   skills: {

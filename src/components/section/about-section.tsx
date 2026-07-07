@@ -61,7 +61,7 @@ export default function AboutSection() {
 
   return (
     <div className="flex flex-col items-start gap-4 w-full">
-      <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+      <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert whitespace-pre-line">
         {summary}
       </div>
       <div className="flex flex-row flex-wrap gap-4 items-center justify-between w-full">
