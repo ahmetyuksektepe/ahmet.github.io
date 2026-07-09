@@ -133,7 +133,7 @@ export default function Page() {
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="text-xl font-bold">Technologies I Have Worked With</h2>
           </BlurFade>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {Object.entries(DATA.skills).map(([key, category], index) => {

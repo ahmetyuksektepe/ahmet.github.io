@@ -40,7 +40,6 @@ export const DATA = {
         { name: "React Native", icon: ReactLight, slug: "react" },
         { name: "Next.js", icon: NextjsIconDark, slug: "nextdotjs" },
         { name: "TypeScript", icon: Typescript, slug: "typescript" },
-        { name: "Tailwind CSS", icon: Icons.tailwindcss, slug: "tailwindcss" },
       ],
     },
     backend: {
@@ -52,7 +51,6 @@ export const DATA = {
         { name: "Spring Boot", icon: null, slug: "springboot" },
         { name: ".NET", icon: DotNet, slug: "dotnet" },
         { name: "Java", icon: Java, slug: "openjdk" },
-        { name: "Node.js", icon: Nodejs, slug: "nodedotjs" },
         { name: "Python", icon: Python, slug: "python" },
         { name: "C#", icon: Csharp, slug: "csharp" },
         { name: "GraphQL", icon: GraphQL, slug: "graphql" },
