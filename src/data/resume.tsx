@@ -74,6 +74,7 @@ export const DATA = {
         { name: "Docker", icon: Docker, slug: "docker" },
         { name: "Kubernetes", icon: Kubernetes, slug: "kubernetes" },
         { name: "Helm", icon: Helm, slug: "helm" },
+        { name: "Argo Workflows", icon: null, slug: "argo" },
       ],
     },
     tools: {
