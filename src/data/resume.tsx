@@ -63,6 +63,7 @@ export const DATA = {
       icon: "database",
       items: [
         { name: "PostgreSQL", icon: Postgresql, slug: "postgresql" },
+        { name: "Supabase", icon: null, slug: "supabase" },
       ],
     },
     devops: {
