@@ -17,6 +17,7 @@ import { NestJS } from "@/components/ui/svgs/nestjs";
 import { Helm } from "@/components/ui/svgs/helm";
 import { RabbitMQ } from "@/components/ui/svgs/rabbitmq";
 import { GraphQL } from "@/components/ui/svgs/graphql";
+import { Redis } from "@/components/ui/svgs/redis";
 
 export const DATA = {
   name: "Ahmet Faruk Yüksektepe",
@@ -94,7 +95,7 @@ export const DATA = {
       icon: "graduation-cap",
       items: [
         { name: "Keycloak", icon: null, slug: "keycloak" },
-        { name: "Redis", icon: null, slug: "redis" },
+        { name: "Redis", icon: Redis, slug: "redis" },
 
       ],
     },
