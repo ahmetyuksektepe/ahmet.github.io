@@ -94,6 +94,8 @@ export const DATA = {
       icon: "graduation-cap",
       items: [
         { name: "Keycloak", icon: null, slug: "keycloak" },
+        { name: "Redis", icon: null, slug: "redis" },
+
       ],
     },
   },
